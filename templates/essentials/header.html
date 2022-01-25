@@ -1,0 +1,87 @@
+<!-- Header styling -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pushster&family=Ubuntu&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 40px;
+        border-bottom: 2px solid #000000;
+    }
+
+    header .title {
+        font-size: 1.8em;
+        color: white;
+        text-decoration: none;
+        text-shadow:
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+    }
+
+    nav a {
+        color: white;
+        text-shadow:
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+        font-size: 1.6em;
+        text-decoration: none;
+        margin-left: 30px;
+    }
+
+    @media screen and (max-width: 768px) {
+        nav {
+            display: flex;
+        }
+        nav a {
+            font-size: 1.1em;
+        }
+    }
+
+    header a {
+        display: inline-block;
+        position: relative;
+    }
+
+    header a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    header a:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .title {
+        font-family: 'Pushster', serif;
+    }
+</style>
+<title>Leda Shop</title>
+
+<header>
+    <a class='title' href='/' style='font-family: "Pushster", serif;'>LEDA SHOP</a>
+    <nav>
+        <a href='/products/' style='font-family: "Pushster", serif;'>Produkti</a>
+        <a href='/about/' style='font-family: "Pushster", serif;'>O nama</a>
+        <a href='/contact/' style='font-family: "Pushster", serif;'>Kontakt</a>
+    </nav>
+</header>

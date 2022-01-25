@@ -1,0 +1,187 @@
+<style type="text/css">
+    main .title {
+        font-size: 2.8em;
+        text-align: center;
+        margin-top: 50px;
+        text-shadow:
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+        color: white;
+    }
+
+    main .subtitle {
+        text-align: center;
+        color: black;
+        margin-top: 20px;
+    }
+
+    .index-section {
+        margin-top: 5vw;
+        display: flex;
+    }
+
+    @media screen and (max-width: 768px) {
+        .index-section {
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .index-section {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    .index-section-r {
+        margin-top: 5vw;
+        display: flex;
+    }
+
+    @media screen and (max-width: 768px) {
+        .index-section-r {
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .index-section-r {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    .index-section img {
+        width: 50%;
+        border: 1px solid black;
+        border-radius: 25px 0px 0px 25px;
+    }
+
+    .index-section-r img {
+        width: 50%;
+        border: 1px solid black;
+        border-radius: 0px 25px 25px 0px;
+    }
+
+    .index-section .section-text {
+        border-right: 1px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-radius: 0px 25px 25px 0px;
+        padding: 20px;
+    }
+    
+    .index-section-r .section-text-r {
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-radius: 25px 0px 0px 25px;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        text-decoration: underline;
+    }
+
+    .section-title b {
+        font-family: 'Pushster', serif;
+    }
+
+    .section-description {
+        font-size: 3vw;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.8s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+<main>
+    <p class='title'>Leda Shop</p>
+    <p class="subtitle">Najkvalitetnija obuća u Srbiji</p>
+
+    <div class='index-section' id='section-1'>
+        <img src='{{ url_for("static", filename="img/cipele_section_1.jpg") }}' alt='cipele_section_1'>
+        <div class='section-text'>
+            <p class='section-title'><b>Naši produkti</b></p>
+            <p class='section-description'>Imamo jedan od najvećih asortimana obuće u Srbiji i šire. Imamo svakakve vrste cipela, patika i čizama.</p>
+        </div>
+    </div>
+
+    <!-- <button onClick='console.log(window.scrollY);'>Get Scrolled</button> -->
+
+    <div class='index-section-r' id='section-2'>
+        <div class='section-text-r'>
+            <p class='section-title'><b>Naši produkti</b></p>
+            <p class='section-description'>Imamo jedan od najvećih asortimana obuće u Srbiji i šire. Imamo svakakve vrste cipela, patika i čizama.</p>
+        </div>
+        <img src='{{ url_for("static", filename="img/cipele_section_2.jpg") }}' alt='cipele_section_1'>
+    </div>
+
+    <div style='height: 5vw;'></div>
+
+    <script type='text/javascript'>
+        const fadeInSpeed = 800;
+
+        // 100 & 542
+        let firstSection = document.getElementById('section-1');
+        let secondSection = document.getElementById('section-2');
+
+        if (window.innerWidth > 1130) {
+            firstSection.style.opacity = 0;
+            secondSection.style.opacity = 0;
+        }
+        
+        let firstMinScrolled = 100;
+        let secondMinScrolled = 400;
+
+        let firstSectionAppeared = false;
+        let secondSectionAppeared = false;
+
+        window.onscroll = function () {
+            let scrolled = window.scrollY;
+
+            if(window.innerWidth > 1130) {
+                if(!firstSectionAppeared && scrolled >= firstMinScrolled) {
+                    firstSection.classList.add('fade-in');
+                    setTimeout(function() {
+                        firstSection.style.opacity = 1;
+                    }, fadeInSpeed);
+                }
+
+                if(!secondSectionAppeared && scrolled >= secondMinScrolled) {
+                    secondSection.classList.add('fade-in');
+                    setTimeout(function() {
+                        secondSection.style.opacity = 1;
+                    }, fadeInSpeed);
+                }
+            }
+        }
+        // var op = 0.1;  // initial opacity
+        // element.style.display = 'block';
+        // var timer = setInterval(function () {
+        //     if (op >= 1){
+        //         clearInterval(timer);
+        //     }
+        //     element.style.opacity = op;
+        //     element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        //     op += op * 0.1;
+        // }, 10);
+    </script>
+</main>
